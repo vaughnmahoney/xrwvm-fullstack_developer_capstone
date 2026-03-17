@@ -2,14 +2,14 @@ FROM node:18.12.1-bullseye-slim
 
 RUN npm install -g npm@9.1.3
 
-ADD package.json .
-ADD app.js .
-ADD review.js .
-ADD dealership.js .
-ADD data/dealerships.json .
-ADD data/reviews.json .
-COPY . .
+WORKDIR /app
+
+# Install dependencies
+COPY package.json ./
 RUN npm install
+
+# Copy application source
+COPY . .
 
 EXPOSE 3030
 
