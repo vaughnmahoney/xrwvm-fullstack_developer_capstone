@@ -28,12 +28,16 @@ SECRET_KEY =\
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+_THEIA_PROXY = (
+    'https://vnm0923-8000.theiadockernext-0-labs-prod-'
+    'theiak8s-4-tor01.proxy.cognitiveclass.ai'
+)
 ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
-    'https://vnm0923-8000.theiadockernext-0-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai',
+    _THEIA_PROXY,
 ]
-CSRF_TRUSTED_ORIGINS = ['https://vnm0923-8000.theiadockernext-0-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai']
+CSRF_TRUSTED_ORIGINS = [_THEIA_PROXY]
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [],
@@ -97,20 +101,28 @@ DATABASES = {
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME':
-        'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        'NAME': (
+            'django.contrib.auth.password_validation.'
+            'UserAttributeSimilarityValidator'
+        ),
     },
     {
-        'NAME':
-        'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'NAME': (
+            'django.contrib.auth.password_validation.'
+            'MinimumLengthValidator'
+        ),
     },
     {
-        'NAME':
-        'django.contrib.auth.password_validation.CommonPasswordValidator',
+        'NAME': (
+            'django.contrib.auth.password_validation.'
+            'CommonPasswordValidator'
+        ),
     },
     {
-        'NAME':
-        'django.contrib.auth.password_validation.NumericPasswordValidator',
+        'NAME': (
+            'django.contrib.auth.password_validation.'
+            'NumericPasswordValidator'
+        ),
     },
 ]
 
@@ -147,4 +159,3 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'frontend/build'),
     os.path.join(BASE_DIR, 'frontend/build/static'),
 ]
-
